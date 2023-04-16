@@ -1,0 +1,36 @@
+<h2>User info</h2>
+  <%= form_with model: @item do |f| %>
+    <div>
+      <!--画像-->
+      <%#= f.label :image %>
+      <%#= f.file_field :profile_image, accept: "image/*", class: "form-control-file user_image" %>
+    </div>
+    <div>
+      <!--商品名-->
+      <%#= f.label :name %>
+      <%#= f.text_field :name, class: "form-control name" %>
+    </div>
+    <div>
+      <!--商品説明-->
+      <%#= f.label :introduction %>
+      <%#= f.text_area :introduction, class: "form-control introduction" %>
+    </div>
+    <div>
+      <!--ジャンル-->
+      <%#= f.label :introduction %>
+      <%#= f.select :genre, :introduction, class: "form-control introduction" %>
+    </div>
+    <div>
+      <!--税抜価格-->
+      <%#= f.label :introduction %>
+      <%#= f.text_area :introduction, class: "form-control introduction" %>
+    </div>
+      <!--販売ステータス ラジオボタン-->
+      <%#= f.label :is_active %>
+      <%#= f.radio_button :introduction, class: "form-control introduction" %>
+    </div>
+    <div>
+      <!--新規登録ボタン-->
+      <%= f.submit "新規登録", class: "btn btn-secondary" %>
+    </div>
+  <% end %>
