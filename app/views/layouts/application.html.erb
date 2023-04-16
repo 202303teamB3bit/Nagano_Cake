@@ -31,6 +31,17 @@
     <% end %>
   </header>
 
+  <!-- フラッシュメッセージ -->
+  <% if flash[:notice] %>
+    <div class="text-success">
+      <p class="notice"><%= notice %></p>
+    </div>
+  <% end %>
+  <% if flash[:alert] %>
+    <div class="text-danger">
+      <p class="alert"><%= alert %></p>
+    </div>
+  <% end %>
 
   <body>
     <%= yield %>
