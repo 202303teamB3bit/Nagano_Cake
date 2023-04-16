@@ -4,12 +4,19 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
+    get '/customers/my_page' => 'customers#show'
+    get '/customers/info/edit' => 'customers#edit'
+    patch '/customers/info' => 'customers#update'
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    patch '/customers/withdraw' => 'customers#withdraw'
   end
 
   # 管理者用
   namespace :admin do
     root to: 'homes#top'
   end
+
+
 
   # 顧客用
   # URL /customers/sign_in ...
