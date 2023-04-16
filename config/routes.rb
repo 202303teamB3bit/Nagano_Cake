@@ -2,12 +2,13 @@ Rails.application.routes.draw do
 
   # 顧客用
   scope module: :public do
+    root to: 'homes#top'
+    get '/about' => 'homes#about'
     get '/customers/my_page' => 'customers#show'
     get '/customers/info/edit' => 'customers#edit'
     patch '/customers/info' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
-    root to: 'homes#top'
-    get '/about' => 'homes#about'
+    patch '/customers/withdraw' => 'customers#withdraw'
   end
 
   # 管理者用
