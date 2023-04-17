@@ -1,6 +1,5 @@
 class Item < ApplicationRecord
-  has_many :cart_items, dependent: :destroy, foreign_key: 'item_id'
-  has_many :customers, through: :cart_items
+  has_many :cart_items
 
   has_one_attached :image
   enum is_active: { sale: true, discontinued: false }
@@ -14,5 +13,10 @@ class Item < ApplicationRecord
       image.variant(resize_to_fill: [width, height]).processed
   end
 
+  # 単価（税込）
+  def with_tax_price
+    (price * 1.1).floor
+  end
+  
 
 end
