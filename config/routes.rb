@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  # namespace :admin do
-  #   get 'genres/index'
-  #   get 'genres/edit'
-  # end
   # 顧客用
   scope module: :public do
     root to: 'homes#top'
@@ -14,6 +10,10 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch '/customers/withdraw' => 'customers#withdraw'
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+
   end
 
   # 管理者用

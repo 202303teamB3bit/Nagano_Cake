@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+
+   <div class="col-2 mx-auto">
+    <table class="table table-borderless">
+     <thead>
+      <tr>
+       <th>ジャンル検索</th>
+      </tr>
+     </thead>
+     <tbody>
+      <% @items.each do |item| %>
+      <tr>
+       <td><%= item.genre_id %></td>
+      </tr>
+      <% end %>
+     </tbody>
+    </table>
+   </div>
+
+   <div class="col-3 mx-auto">
+    <%= image_tag @item.get_image(200, 200) %>
+   </div>
+
+   <div class="col-5 mx-auto">
+     <h2 class="font-weight-bold"><%= @item.name %></h2>
+     <p><%= @item.introduction %></p>
+     <p>¥ <%= @item.price %></p>
+     
+     <%= form_with model:@, url: cart_items_path do |f| %>
+
+   </div>
+  </div>
+</div>
