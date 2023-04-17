@@ -1,4 +1,15 @@
 class Customer < ApplicationRecord
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+
+  # フルネームカナが未定義なので新たに作ってます
+  def full_name_kana
+    "#{first_name_kana} #{last_name_kana}"
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
