@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
+  # namespace :admin do
+  #   get 'genres/index'
+  #   get 'genres/edit'
+  # end
   # 顧客用
   scope module: :public do
     root to: 'homes#top'
@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :items, except: [:destroy]
+    resources :genres, only: [:index, :edit, :create, :update]
   end
 
 
