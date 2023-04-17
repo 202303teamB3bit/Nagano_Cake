@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+
+  namespace :admin do
+    get 'customers/index'
+    get 'customers/show'
+    get 'customers/edit'
+  end
   # 顧客用
   scope module: :public do
     root to: 'homes#top'
@@ -16,6 +22,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :items, except: [:destroy]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
 
 
