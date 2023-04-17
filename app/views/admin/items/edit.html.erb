@@ -27,10 +27,10 @@
         </div>
         <div class="form-group">
       <!--販売ステータス ラジオボタン　-->
-          <%= f.label :sales_status_sale, '販売中' %>
-          <%= f.radio_button :sales_status, :sale %>
-          <%= f.label :sales_status_discontinued, '販売停止中' %>
-          <%= f.radio_button :sales_status, :discontinued %>
+          <%= f.label :is_active_sale, '販売中' %>
+          <%= f.radio_button :is_active, :sale %>
+          <%= f.label :is_active_discontinued, '販売停止中' %>
+          <%= f.radio_button :is_active, :discontinued %>
         </div>
         <div class="form-group">
           <%= f.submit "変更を保存", class: "btn btn-success" %>
