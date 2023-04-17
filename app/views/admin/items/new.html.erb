@@ -16,7 +16,6 @@
           <%= f.text_area :introduction, class: "form-control introduction" %>
         </div>
         <div class="form-group">
-      <!--ジャンル-->
           <%= f.label :genre_id, 'ジャンル' %>
           <%= f.select :genre_id,  [['ケーキ', 1], ['焼き菓子', 2]], { include_blank: "--選択してください--" }, { id: "user_id", class: "user_class" } %>
         </div>
@@ -26,7 +25,6 @@
           <%= f.text_field :price %>
         </div>
         <div class="form-group">
-      <!--販売ステータス ラジオボタン　-->
           <%= f.label :is_active_sale, '販売中' %>
           <%= f.radio_button :is_active, :sale %>
           <%= f.label :is_active_discontinued, '販売停止中' %>
