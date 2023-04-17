@@ -28,7 +28,7 @@
         <div>
           <p>
             <%= link_to item_path(item.id) do %>
-              <%=  image_tag item.get_image %>
+              <%=  image_tag item.get_image(200, 200) %>
             <% end %>
           </p>
           <p><%= item.name %></p>

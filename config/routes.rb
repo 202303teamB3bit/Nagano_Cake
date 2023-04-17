@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'cart_items/index'
+  end
   # 顧客用
   scope module: :public do
     root to: 'homes#top'
@@ -11,6 +14,9 @@ Rails.application.routes.draw do
     patch '/customers/withdraw' => 'customers#withdraw'
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+
   end
 
   # 管理者用

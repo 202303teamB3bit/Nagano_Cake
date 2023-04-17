@@ -1,4 +1,6 @@
 class Item < ApplicationRecord
+  has_many :cart_items, dependent: :destroy, foreign_key: 'item_id'
+  has_many :customers, through: :cart_items
 
   has_one_attached :image
   enum is_active: { sale: true, discontinued: false }

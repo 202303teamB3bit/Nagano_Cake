@@ -19,13 +19,15 @@
    </div>
 
    <div class="col-3 mx-auto">
-    <%= image_tag @item.get_image %>
+    <%= image_tag @item.get_image(200, 200) %>
    </div>
 
    <div class="col-5 mx-auto">
      <h2 class="font-weight-bold"><%= @item.name %></h2>
      <p><%= @item.introduction %></p>
      <p>¥ <%= @item.price %></p>
+     
+     <%= form_with model:@, url: cart_items_path do |f| %>
 
    </div>
   </div>
