@@ -1,0 +1,48 @@
+
+// おしゃれなフォントインストールしてみた　ここから
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,700&display=swap');
+
+li {
+  list-style: none;
+}
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.navbar-custom {
+  background-color: #f8d7da;
+  border-bottom: 2px solid #f06eaa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+  font-weight: 700;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #f06eaa;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: #f06eaa;
+  transition: color 0.3s;
+}
+
+.navbar-brand:hover {
+  color: #f06eaa;
+}
+// ここまで
+
+.nav-item {
+  font-size: 18px;
+  padding: 12px;
+}
+
