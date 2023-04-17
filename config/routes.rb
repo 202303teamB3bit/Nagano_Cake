@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   # 顧客用
   scope module: :public do
     root to: 'homes#top'
@@ -21,7 +20,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :items, except: [:destroy]
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :edit, :create, :update]
   end
 
 
