@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+
+  <div class="col-2 mx-auto">
+    <table class="table table-borderless">
+     <thead>
+      <tr>
+       <th>ジャンル検索</th>
+      </tr>
+     </thead>
+     <tbody>
+      <% @items.each do |item| %>
+      <tr>
+       <td><%= item.genre_id %></td>
+      </tr>
+      <% end %>
+     </tbody>
+    </table>
+   </div>
+
+   <div class="col-md-10">
+
+      <h2>商品一覧</h2>
+      （全<%= @items.count %>件）
+      <div class="d-flex justify-content-start flex-wrap">
+      <% @items.each do |item| %>
+
+        <div>
+          <p>
+            <%= link_to item_path(item.id) do %>
+              <%=  image_tag item.get_image %>
+            <% end %>
+          </p>
+          <p><%= item.name %></p>
+          <p>¥<%= item.price %></p>
+        </div>
+
+      <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

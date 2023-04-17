@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch '/customers/withdraw' => 'customers#withdraw'
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :items, only: [:index, :show]
   end
 
   # 管理者用
