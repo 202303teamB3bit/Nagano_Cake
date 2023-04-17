@@ -2,4 +2,27 @@
   <h3>
     <span style="background-color: #FAF0E6;"><%= @customer.full_name %>さんの会員詳細</span>
   </h3>
+
+
+  <div class="col-md-10">
+    <div class="card my-4">
+      <ul class="list-group list-group-flush">
+          <li class="list-group-item my-2 h5"><strong>会員ID:</strong><%= @customer.id %></li>
+          <li class="list-group-item my-2 h5"><strong>氏名:</strong><%= @customer.full_name %></li>
+          <li class="list-group-item my-2 h5"><strong>フリガナ:</strong><%= @customer.full_name_kana %></li>
+          <li class="list-group-item my-2 h5"><strong>郵便番号:</strong><%= @customer.post_code %></li>
+          <li class="list-group-item my-2 h5"><strong>住所:</strong><%= @customer.address %></li>
+          <li class="list-group-item my-2 h5"><strong>電話番号:</strong><%= @customer.phone_number %></li>
+          <li class="list-group-item my-2 h5"><strong>メールアドレス:</strong><%= @customer.email %></li>
+          <li class="list-group-item my-2 h5">
+            <strong>会員ステータス:</strong>
+            <% if @customer.is_deleted == false %>
+              <span class="font-weight-bold text-success">有効</span>
+            <% else %>
+              <span class="font-weight-bold text-danger">退会済み</span>
+            <% end %>
+            </li>
+        </ul>
+</div>
+</div>
 </div>
