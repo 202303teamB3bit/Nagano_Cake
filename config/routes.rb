@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   # 顧客用
   scope module: :public do
     # homes
@@ -34,10 +35,6 @@ Rails.application.routes.draw do
         delete "destroy_all"
       end
     end
-
-    # resources :cart_items, only: [:index, :update, :destroy, :create]
-    # delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
-
 
   end
 
