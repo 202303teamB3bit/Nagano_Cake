@@ -12,7 +12,11 @@ class Admin::GenresController < ApplicationController
       flash[:notice] = "登録が完了しました"
       redirect_to admin_genres_path
     else
-      redirect_to admin_genres_path
+      flash[:notice] = "登録に失敗しました"
+      # redirect_to admin_genres_path
+      @genre = Genre.new
+      @genres = Genre.all
+      render :index
     end
   end
 

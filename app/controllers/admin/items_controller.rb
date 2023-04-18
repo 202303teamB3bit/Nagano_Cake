@@ -11,6 +11,7 @@ class Admin::ItemsController < ApplicationController
       flash[:notice] = "登録が完了しました"
       redirect_to admin_items_path
     else
+      flash[:notice] = "登録に失敗しました"
       render :new
     end
   end
@@ -33,6 +34,7 @@ class Admin::ItemsController < ApplicationController
       flash[:notice] = "変更が完了しました"
       redirect_to admin_item_path
     else
+      flash[:notice] = "登録に失敗しました"
       render :edit
     end
   end
