@@ -5,6 +5,11 @@ class Item < ApplicationRecord
   enum is_active: { sale: true, discontinued: false }
   belongs_to :genre
 
+  validates :name, presence: true
+  validates :introduction, presence: true
+  validates :price, presence: true
+  validates :is_active, presence: true
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
