@@ -10,18 +10,25 @@
     </div>
     <div class='col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto'>
         <div>
+          商品名
           <%= @item.name %>
         </div>
         <div>
+          商品説明
           <%= @item.introduction %>
         </div>
         <div>
-          <%= @item.genre_id %>
+          ジャンル
+          <%= @item.genre.name %>
         </div>
         <div>
+          税込価格
+          <p>(税抜価格)</p>
           <%= @item.price %>
+          （<%= @item.price %>）
         </div>
         <div>
+          販売ステータス
           <%= @item.is_active_i18n %>
         </div>
         <div>
