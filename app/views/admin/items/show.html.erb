@@ -23,10 +23,9 @@
         </div>
         <div>
           税込価格
-          <p>(税抜価格)</p>
-          <%= @item.price %>
-          （<%= @item.price %>）
         </div>
+          <p>(税抜価格) <%= @item.with_tax_price %>
+          （<%= @item.price %>）</p>
         <div>
           販売ステータス
           <%= @item.is_active_i18n %>
