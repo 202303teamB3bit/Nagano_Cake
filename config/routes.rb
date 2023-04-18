@@ -4,17 +4,22 @@ Rails.application.routes.draw do
 
   # 顧客用
   scope module: :public do
+    # homes
     root to: 'homes#top'
     get '/about' => 'homes#about'
+    # customers
     get '/customers/my_page' => 'customers#show'
     get '/customers/info/edit' => 'customers#edit'
     patch '/customers/info' => 'customers#update'
-    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    get '/customers/unsubscribe' => 'customers#unsubscribe'
     patch '/customers/withdraw' => 'customers#withdraw'
+    # addresses
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    # items
     resources :items, only: [:index, :show]
+    # cart_items
     resources :cart_items, only: [:index, :update, :destroy, :create]
-    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
 
   end
 
@@ -22,6 +27,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :items, except: [:destroy]
+    resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
   end
 

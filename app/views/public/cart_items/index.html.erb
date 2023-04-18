@@ -1,2 +1,54 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class="container">
+  <div class="d-flex justify-content-between mb-3">
+    <h2>ショッピングカート</h2>
+    <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger"%>
+  </div>
+  <div>
+    <table class="table table-bordered" >
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td>
+            <%= image_tag cart_item.item.get_image(50, 50) %>
+            <%= cart_item.item.name%>
+          </td>
+          <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+          <td>
+            <%= form_with model:cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
+              <%= f.hidden_field :customer_id, :value => current_customer.id %>
+              <%= f.hidden_field :item_id, :value => cart_item.item_id %>
+              <%= f.select :quantity, *[1..10] %>
+              <%= f.submit "変更", class: "btn btn-sm btn-primary" %>
+            <% end %>
+          <td style="width:150px"><%= (cart_item.item.with_tax_price * cart_item.quantity).to_s(:delimited) %></td>
+          <% @total += cart_item.item.with_tax_price * cart_item.quantity %>
+          <td style="width:150px" class="text-center"><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-sm btn-danger" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between">
+      <p><%= link_to "買い物を続ける", root_path, class: "btn btn-sm btn-primary" %></p>
+      <table class="table table-bordered" style="width:300px">
+        <tbody>
+          <td style="width:150px">合計金額</td>
+          <td style="width:150px">￥<%= @total.to_s(:delimited) %></td>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="text-center">
+      <%= link_to "情報入力に進む", root_path, class: "btn btn-success"%>
+    </div>
+  </div>
+</div>
