@@ -1,2 +1,38 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="text-center mt-5">
+         <h1><span style="background-color: #FAF0E6;">ようこそ、ながのCAKEへ！</h1></span>
+          <%= image_tag 'toppagecake.png', alt: 'ながのケーキ', class: 'img-fluid'%>
+
+          <h4>
+            このサイトはケーキ販売の<br>
+            ECサイトになります。<br>
+            会員でない方も商品の<br>
+            閲覧はできますが、<br>
+            購入には会員登録が<br>
+            必要になります。
+          </h4>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+  <h2 class="text-center">新着商品</h2>
+  <div class="row">
+    <% 4.times do |i| %> <!-- 4つの画像を表示するための繰り返し処理 -->
+      <div class="col-md-3">
+        <div class="card">
+          <%= image_tag "sample_product_#{i+1}.jpg", alt: "商品画像#{i+1}", class: 'card-img-top img-fluid' %>
+          <div class="card-body">
+            <h5 class="card-title">商品名#{i+1}</h5>
+            <p class="card-text">価格: ¥1,000</p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
