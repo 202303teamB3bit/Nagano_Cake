@@ -2,9 +2,6 @@ Rails.application.routes.draw do
 
 
 
-  namespace :admin do
-    get 'orders/show'
-  end
   # 顧客用
   scope module: :public do
     # homes
@@ -20,6 +17,16 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     # items
     resources :items, only: [:index, :show]
+
+
+    # orders
+    resources :orders, only: [:new, :create, :show, :index] do
+      collection do
+        get :check
+        # 仮でgetにしてます。本来はpostです(check)
+        get :complete
+      end
+    end
 
     # cart_items
 
