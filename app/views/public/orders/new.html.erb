@@ -1,0 +1,208 @@
+<body class="bg-body-tertiary">
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <h1>注文情報入力</h1>
+        <h3 class="lead">この度はながのケーキをお選び頂き誠にありがとうございます🎉</h3>
+      </div>
+
+      <div class="row g-5">
+        <div class="col-md-5 col-lg-3 order-md-last">
+
+        </div>
+
+        <div class="col-md-7 col-lg-8">
+          <h4 class="mb-5">請求先住所</h4>
+          <%= form_with class: "needs-validation", novalidate: true do |f| %>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <%= f.label :familyName, class: "form-label" do %>
+                  姓
+                <% end %>
+                <%= f.text_field :familyName, class: "form-control", id: "familyName", placeholder: "", value: "", required: true %>
+                <div class="invalid-feedback">
+                  名字を入力してください
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <%= f.label :givenName, class: "form-label" do %>
+                  名
+                <% end %>
+                <%= f.text_field :givenName, class: "form-control", id: "givenName", placeholder: "", value: "", required: true %>
+                <div class="invalid-feedback">
+                  名前を入力してください
+                </div>
+              </div>
+
+              <div class="col-12">
+                <%= f.label :username, class: "form-label" do %>
+                  ユーザーネーム
+                <% end %>
+                <div class="input-group has-validation">
+                  <span class="input-group-text">@</span>
+                  <%= f.text_field :username, class: "form-control", id: "username", placeholder: "ユーザーネーム", required: true %>
+                  <div class="invalid-feedback">
+                    ユーザー名が必要です
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <%= f.label :email, class: "form-label" do %>
+                  Eメール <span class="text-body-secondary">(任意)</span>
+                <% end %>
+                <%= f.email_field :email, class: "form-control", id: "email", placeholder: "you@example.com" %>
+                <div class="invalid-feedback">
+                  配送の更新に有効なメールアドレスを入力してください
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                  <%= f.label :zip, class: "form-label" do %>
+                    郵便番号
+                  <% end %>
+                  <%= f.text_field :zip, class: "form-control", id: "zip", placeholder: "", required: true %>
+                  <div class="invalid-feedback">
+                    郵便番号を入力してください
+                  </div>
+                </div>
+
+                <div class="col-md-5 mt-2">
+                  <%= f.label :pref, class: "form-label" do %>
+                    都道府県
+                  <% end %>
+                  <%= f.select :pref, options_for_select([["選択...", nil], ["北海道", "hokkaido"], ["青森県", "aomori"], ["岩手県", "iwate"], ["宮城県", "miyagi"], ["秋田県", "akita"],
+                  ["山形県", "yamagata"], ["福島県", "fukushima"], ["茨城県", "ibaraki"], ["栃木県", "tochigi"], ["群馬県", "gunma"], ["埼玉県", "saitama"], ["千葉県", "chiba"],
+                  ["東京都", "tokyo"], ["神奈川県", "kanagawa"], ["新潟県", "niigata"], ["富山県", "toyama"], ["石川県", "ishikawa"], ["福井県", "fukui"], ["山梨県", "yamanashi"],
+                  ["長野県", "nagano"], ["岐阜県", "gifu"], ["静岡県", "shizuoka"], ["愛知県", "aichi"], ["三重県", "mie"], ["滋賀県", "shiga"], ["京都府", "kyoto"], ["大阪府", "osaka"],
+                  ["兵庫県", "hyogo"], ["奈良県", "nara"], ["和歌山県", "wakayama"], ["鳥取県", "tottori"], ["島根県", "shimane"], ["岡山県", "okayama"], ["広島県", "hiroshima"], ["山口県", "yamaguchi"], ["徳島県", "tokushima"],
+                  ["香川県", "kagawa"], ["愛媛県", "ehime"], ["高知県", "kochi"], ["福岡県", "fukuoka"], ["佐賀県", "saga"], ["長崎県", "nagasaki"], ["熊本県", "kumamoto"], ["大分県", "oita"], ["宮崎県", "miyazaki"],
+                  ["鹿児島県", "kagoshima"], ["沖縄県", "okinawa"]]), { include_blank: true }, { class: "form-select d-block w-100", id: "pref", required: true } %>
+                  <div class="invalid-feedback">
+                    都道府県を選択してください
+                  </div>
+                </div>
+
+
+                <div class="col-md-4 mt-2">
+                  <%= f.label :city, class: "form-label" do %>
+                    市町村
+                  <% end %>
+                  <%= f.select :city, options_for_select([["選択...", nil], ["札幌市", "sapporo"]]), { include_blank: true }, { class: "form-select d-block w-100", id: "city", required: true } %>
+                  <div class="invalid-feedback">
+                    市町村を選択してください
+                  </div>
+                </div>
+
+
+
+               <div class="col-12">
+                  <%= f.label :address, class: "form-label" do %>
+                    住所
+                  <% end %>
+                  <%= f.text_field :address, class: "form-control", id: "address", placeholder: "地番", required: true %>
+                  <div class="invalid-feedback">
+                    配送先住所を入力してください
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <%= f.label :address2, class: "form-label" do %>
+                    住所 2 <span class="text-body-secondary">(任意)</span>
+                  <% end %>
+                  <%= f.text_field :address2, class: "form-control", id: "address2", placeholder: "アパート・マンション名" %>
+                </div>
+
+                </div>
+
+                <hr class="my-4">
+                  <div class="form-check">
+                    <%= f.check_box :addressCheck, class: "form-check-input", id: "addressCheck" %>
+                    <%= f.label :addressCheck, class: "form-check-label", for: "addressCheck" do %>
+                      配送先住所は、請求先住所と同じです
+                    <% end %>
+                  </div>
+
+                  <div class="form-check">
+                    <%= f.check_box :keepCheck, class: "form-check-input", id: "keepCheck" %>
+                    <%= f.label :keepCheck, class: "form-check-label", for: "keepCheck" do %>
+                      次回のために、この情報を保存する
+                    <% end %>
+                  </div>
+
+                  <hr class="my-4">
+                    <h4 class="mb-3">お支払い方法</h4>
+                    <div class="my-3">
+                      <div class="form-check">
+                        <%= f.radio_button :paymentMethod, "credit", class: "form-check-input", id: "credit", checked: true, required: true %>
+                        <%= f.label :credit, class: "form-check-label", for: "credit" do %>
+                          クレジットカード
+                        <% end %>
+                      </div>
+
+                      <div class="form-check">
+                        <%= f.radio_button :paymentMethod, "debit", class: "form-check-input", id: "debit", required: true %>
+                        <%= f.label :debit, class: "form-check-label", for: "debit" do %>
+                          デビットカード
+                        <% end %>
+                      </div>
+
+                      <div class="form-check">
+                        <%= f.radio_button :paymentMethod, "paypal", class: "form-check-input", id: "paypal", required: true %>
+                        <%= f.label :paypal, class: "form-check-label", for: "paypal" do %>
+                          PayPal
+                        <% end %>
+                      </div>
+                    </div>
+
+                    <div class="row gy-3">
+                      <div class="col-md-6">
+                        <%= f.label :cc_name, class: "form-label" do %>
+                          カードの名義
+                        <% end %>
+                        <%= f.text_field :cc_name, class: "form-control", id: "cc-name", placeholder: "", required: true %>
+                         <small class="text-body-secondary">カード上に表示されているフルネーム</small>
+                    <div class="invalid-feedback">
+                      カードの名義を入力してください
+                    </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <%= f.label :cc_number, class: "form-label" do %>
+                        クレジットカード番号
+                      <% end %>
+                      <%= f.text_field :cc_number, class: "form-control", id: "cc-number", placeholder: "", required: true %>
+                      <div class="invalid-feedback">
+                        クレジットカード番号を入力してください
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <%= f.label :cc_expiration, class: "form-label" do %>
+                        有効期限
+                      <% end %>
+                      <%= f.text_field :cc_expiration, class: "form-control", id: "cc-expiration", placeholder: "", required: true %>
+                      <div class="invalid-feedback">
+                        有効期限を入力してください
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <%= f.label :cc_cvv, class: "form-label" do %>
+                        CVV
+                      <% end %>
+                      <%= f.text_field :cc_cvv, class: "form-control", id: "cc-cvv", placeholder: "", required: true %>
+                      <div class="invalid-feedback">
+                        セキュリティコードを入力してください
+                      </div>
+                    </div>
+                      </div>
+
+                      <hr class="my-4">
+                        <%= f.submit "精算を続ける", class: "w-100 btn btn-secondary btn-lg", type: "submit" %>
+                        <% end %>
+                                </div>
+                              </div>
+                            </main>
+
