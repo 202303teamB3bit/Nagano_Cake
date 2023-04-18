@@ -29,14 +29,14 @@
       <strong style="font-size: 25px">¥ <%= @item.with_tax_price.to_s(:delimited) %></strong>
       (税込)
      </p>
-     
+
      <% if customer_signed_in? %>
      <div>
       <%= form_with model:@cart_item, url: cart_items_path, method: :post do |f| %>
        <%= f.hidden_field :customer_id, :value => current_customer.id %>
        <%= f.hidden_field :item_id, :value => @item.id %>
        <div class="d-flex justify-content-between" style="width:250px">
-        <%= f.select :quantity, *[1..10], { :include_blank => '個数選択' } %>
+        数量<%= f.select :quantity, *[1..10] %>
         <%= f.submit "カートに入れる", class: "btn btn-sm btn-success" %>
        </div>
       <% end %>
