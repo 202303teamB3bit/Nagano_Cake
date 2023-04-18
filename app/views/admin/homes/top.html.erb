@@ -11,10 +11,19 @@
         </tr>
       </thead>
       <tbody>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <tr>
+          <% @orders.each do |order| %>
+            <td>
+              <%= link_to root_path do %>
+                <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+              <% end %>
+            </td>
+            <td><%= order.customer.name %></td>
+            <td><%= order.order_detail.count %></td>
+            <td><%= order.status %></td>
+          <% end %>
+        </tr>
+
       </tbody>
     </table>
   </div>
