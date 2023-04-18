@@ -17,10 +17,12 @@ Rails.application.routes.draw do
     # items
     resources :items, only: [:index, :show]
 
+
     # orders
     resources :orders, only: [:new, :create, :show, :index] do
       collection do
-        post :check
+        get :check
+        # 仮でgetにしてます。本来はpostです(check)
         get :complete
       end
     end
