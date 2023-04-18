@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get '/customers/my_page' => 'customers#show'
     get '/customers/info/edit' => 'customers#edit'
     patch '/customers/info' => 'customers#update'
-    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    get '/customers/unsubscribe' => 'customers#unsubscribe'
     patch '/customers/withdraw' => 'customers#withdraw'
     # addresses
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]

@@ -29,6 +29,8 @@
       <strong style="font-size: 25px">¥ <%= @item.with_tax_price.to_s(:delimited) %></strong>
       (税込)
      </p>
+     
+     <% if customer_signed_in? %>
      <div>
       <%= form_with model:@cart_item, url: cart_items_path, method: :post do |f| %>
        <%= f.hidden_field :customer_id, :value => current_customer.id %>
@@ -39,7 +41,8 @@
        </div>
       <% end %>
      </div>
-
+     <% end %>
+    
    </div>
   </div>
 </div>
