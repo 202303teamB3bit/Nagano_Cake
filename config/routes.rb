@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
 
 
+  namespace :admin do
+    get 'orders/show'
+  end
   # 顧客用
   scope module: :public do
     # homes
