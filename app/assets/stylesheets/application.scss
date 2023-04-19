@@ -87,3 +87,26 @@ h1, h2, h3, h4, h5, h6 {
 .pagination {
   justify-content: center;
 }
+
+
+// orders/check/html.erb
+.confirmation-table {
+  width: 100%;
+  margin-bottom: 1rem;
+  th, td {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+  }
+  th {
+    font-weight: bold;
+  }
+  .text-right {
+    text-align: right;
+  }
+}
+
+.total-price {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
