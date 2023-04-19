@@ -1,83 +1,52 @@
 <div class="card col-sm-5 mx-auto mt-5">
-  <div class="card-body">
-    <h3 class="mt-1 mb-3">ログイン</h3>
+  <div class=="card-body">
+      <h3 class="mt-1 mb-3">Log in</h3>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form-group">
-      <%= f.label :email, "メールアドレス", :class => "form-label" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :password, "パスワード", :class => "form-label" %>
-      <%#= link_to "パスワードを忘れた場合", new_user_password_path, :class => "float-right" %>
-      <%= f.password_field :password, :class => "form-control" %>
-    <% if devise_mapping.rememberable? %>
-    <div class="form-check">
-      <%= f.check_box :remember_me, :class => "form-check-input" %>
-      <%= f.label :remember_me, "ログインを記憶", :class => "form-check-label" %>
-    </div>
-    <% end %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "ログイン", :class => "btn btn-primary btn-block" %>
-    </div>
-    <% end %>
-
-    <div class="small text-muted text-center mt-4">新しいユーザですか?</div>
-    <%= link_to "アカウントを作成", new_customer_registration_path, :class => "btn btn-light btn-block border mt-1" %>
-  </div>
-</div>
-
-
-<div class="card col-sm-5 mx-auto mt-5">
-  <div class="card-body">
-    <div class="col-sm-8">
-          <h3 class="mt-1 mb-3">Log in</h3>
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="form-group">
-            <label>Email address</label>
-            <input type="email" class="form-control form-control-lg" />
-          </div>
-          <div class="form-group">
-              <label>Password</label>
-              <input type="password" class="form-control form-control-lg" />
-          </div>
-          <button type="submit" class="btn btn-dark btn-lg btn-block">Log in</button>
-          会員登録がお済みでない方
-          <p class="text-center">
-          <%= link_to "こちら", new_customer_registration_path %> から新規登録を行ってください。</p>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm-8">
-
-    <h2>Log in</h2>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="form-group">
+        <%= f.label :email, :class => "form-label" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control" %>
       </div>
-      <div class="field">
-        <%= f.label :password %><br />
-        <%= f.password_field :password, autocomplete: "current-password" %>
+      <div class="form-group">
+        <%= f.label :password, :class => "form-label" %>
+        <%= f.password_field :password, :class => "form-control" %>
       </div>
-    <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
-    <% end %>
       <div class="actions">
-        <%= f.submit "Log in" %>
+        <%= f.submit "Log in", :class => "btn btn-dark btn-lg btn-block" %>
       </div>
     <% end %>
-    <%= render "public/shared/links" %>
+    <div class="small text-muted text-center mt-5">会員登録がおみでない方</div>
+      <%= link_to "Sign up", new_customer_registration_path, :class => "btn btn-light btn-block border mt-1" %>
     </div>
   </div>
 </div>
+
+
+<!--既存のコード↓-->
+<!--<div class="container">-->
+<!--  <div class="row">-->
+<!--    <div class="col-sm-8">-->
+
+<!--    <h2>Log in</h2>-->
+<!--    <%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>-->
+<!--      <div class="field">-->
+<!--        <%#= f.label :email %><br />-->
+<!--        <%#= f.email_field :email, autofocus: true, autocomplete: "email" %>-->
+<!--      </div>-->
+<!--      <div class="field">-->
+<!--        <%#= f.label :password %><br />-->
+<!--        <%#= f.password_field :password, autocomplete: "current-password" %>-->
+<!--      </div>-->
+<!--    <%# if devise_mapping.rememberable? %>-->
+<!--      <div class="field">-->
+<!--        <%#= f.check_box :remember_me %>-->
+<!--        <%#= f.label :remember_me %>-->
+<!--      </div>-->
+<!--    <%# end %>-->
+<!--      <div class="actions">-->
+<!--        <%#= f.submit "Log in" %>-->
+<!--      </div>-->
+<!--    <%# end %>-->
+<!--    <%#= render "public/shared/links" %>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
