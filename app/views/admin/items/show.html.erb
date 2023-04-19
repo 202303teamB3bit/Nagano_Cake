@@ -38,6 +38,11 @@
             <td>販売ステータス</td>
             <td><%= @item.is_active_i18n %></td>
           </tr>
+          <tr>
+            <td>
+              <%= link_to "編集する", edit_admin_item_path, class: "btn btn-success" %>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
