@@ -19,28 +19,33 @@
    </div>
 
    <div class="col-3 mx-auto">
-    <%= image_tag @item.get_image(200, 200) %>
+    <%= image_tag @item.get_image(250, 250) %>
    </div>
 
    <div class="col-5 mx-auto">
-     <h2 class="font-weight-bold"><%= @item.name %></h2>
+     <h2 class="font-weight-bold mb-3"><%= @item.name %></h2>
      <p><%= @item.introduction %></p>
      <p>
       <strong style="font-size: 25px">¥ <%= @item.with_tax_price.to_s(:delimited) %></strong>
       (税込)
      </p>
+     <% if @item.is_active == "sale" %>
+      <p class="text-success"><%= @item.is_active_i18n %></p>
+     <% elsif @item.is_active == "discontinued" %>
+      <p class="text-danger"><%= @item.is_active_i18n %></p>
+     <% end %>
 
-     <% if customer_signed_in? %>
-     <div>
-      <%= form_with model:@cart_item, url: cart_items_path, method: :post do |f| %>
-       <%= f.hidden_field :customer_id, :value => current_customer.id %>
-       <%= f.hidden_field :item_id, :value => @item.id %>
-       <div class="d-flex justify-content-between" style="width:250px">
-        数量<%= f.select :quantity, *[1..10] %>
-        <%= f.submit "カートに入れる", class: "btn btn-sm btn-success" %>
-       </div>
-      <% end %>
-     </div>
+     <% if customer_signed_in? && @item.is_active == "sale" %>
+      <div>
+       <%= form_with model:@cart_item, url: cart_items_path, method: :post do |f| %>
+        <%= f.hidden_field :customer_id, :value => current_customer.id %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <div class="d-flex justify-content-between" style="width:250px">
+         数量<%= f.select :quantity, *[1..10] %>
+         <%= f.submit "カートに入れる", class: "btn btn-sm btn-success" %>
+        </div>
+       <% end %>
+      </div>
      <% end %>
 
    </div>
