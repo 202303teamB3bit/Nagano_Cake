@@ -8,6 +8,20 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
+
+     if @order.customer.cart_items.count >= 1
+        @order.save
+        current_customer.cart_items.each do |cart_item| #カートの商品を1つずつ取り出しループ
+          @order_detail = OrderDetail.new
+          @order_detail.item_id = cart_item.item_id
+          @order_detail.quantity = cart_item.quantity
+          @order_detail.purchase_price = (cart_item.item.with_tax_price).round
+          @order_detail.order_id =  @order.id #注文商品に注文idを紐付け
+          @order_detail.making_status = 0
+          @order_detail.save
+        end
+     end
+
     if @order.save
       redirect_to complete_orders_path, notice: 'Thanks!!!'
     else

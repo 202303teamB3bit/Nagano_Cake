@@ -14,3 +14,9 @@ ja:
           making: "製作中"
           shipping_preparation: "発送準備中"
           shipped: "発送済"
+      order_detail:
+        making_status:
+          cannot_start: "着手不可"
+          waiting: "製作待ち"
+          making: "製作中"
+          completion: "製作完了"
