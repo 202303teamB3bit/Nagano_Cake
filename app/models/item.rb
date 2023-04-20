@@ -1,10 +1,11 @@
 class Item < ApplicationRecord
   has_many :cart_items
   has_many :order_details
+  belongs_to :genre
 
   has_one_attached :image
   enum is_active: { sale: true, discontinued: false }
-  belongs_to :genre
+
 
   validates :name, presence: true
   validates :introduction, presence: true
