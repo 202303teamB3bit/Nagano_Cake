@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
 
     # orders
-    resources :orders, only: [:new, :create, :new, :index] do
+    resources :orders, only: [:new, :create, :new, :index, :show] do
       collection do
         post :check
         # 仮でgetにしてます。本来はpostです(check)
@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
-    resources :order, only: [:show, :update]
+    resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
   end
 

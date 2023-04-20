@@ -11,20 +11,25 @@
         </tr>
       </thead>
       <tbody>
+        <% @orders.each do |order| %>
         <tr>
-          <% @orders.each do |order| %>
-            <td>
-              <%= link_to root_path do %>
-                <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-              <% end %>
-            </td>
-            <td><%= order.customer.name %></td>
-            <td><%= order.order_detail.count %></td>
-            <td><%= order.status %></td>
-          <% end %>
+          <td>
+            <%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order.id) %>
+          </td>
+          <td>
+            <%= order.customer.full_name %>
+          </td>
+          <td>
+            <% order.order_details.each do |order_detail| %>
+              <% @quantity += order_detail.quantity  %>
+            <% end %>
+            <%= @quantity %>
+          </td>
+          <td><%= order.status_i18n %></td>
         </tr>
+        <% end %>
       </tbody>
     </table>
-    <div class="mx-auto"><%= paginate @orders %></div>
+
   </div>
 </div>

@@ -12,6 +12,41 @@
           <h4 class="mb-5">請求先住所</h4>
         <%= form_with model: @order, url: check_orders_path, method: :post, local: true, class: "needs-validation", novalidate: true do |f| %>
 
+           <h1>お届け先</h1>
+               <!--自身の住所の場合＝＝０として設定する。-->
+
+               <%= f.radio_button :address_option, 0, checked: "checked" %>
+               <%= f.label :order_address, "ご自身の住所" %><br>
+
+
+             <div class="ship_address">
+               〒<%= @customer.post_code %>
+               <%= @customer.address %>
+
+
+
+               <div>
+               <%= @customer.first_name %>
+               <%= @customer.last_name %>
+               </div>
+               </div>
+
+
+               <div>
+                 <%= f.radio_button :address_option, 1 %>
+                 <%= f.label :order_address, "登録先住所から選択" %><br>
+
+                 <%= f.collection_select :customer_id, @addresses, :id, :address_display, prompt: "住所を選択してください" %><br>
+
+               </div>
+
+             </p>
+
+             <div>
+               <%= f.radio_button :address_option, 2 %>
+               <%= f.label :order_address, "新しいお届け先" %>
+             </div>
+
 
             <div class="row g-3">
               <div class="col-sm-6">
@@ -24,7 +59,7 @@
                 </div>
               </div>
 
-          
+
               <div class="col-md-3">
                   <%= f.label :post_code, class: "form-label" do %>
                     郵便番号
