@@ -160,3 +160,20 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+
+// orders/show
+.show-font {
+  font-family: "Roboto", sans-serif;
+}
+
+.table-bordered {
+  th {
+    font-weight: bold;
+  }
+}
+
+.table-info {
+  background-color: #007bff;
+  color: white;
+}

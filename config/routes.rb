@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
 
     # orders
-    resources :orders, only: [:new, :create, :new, :index] do
+    resources :orders, only: [:new, :create, :new, :index, :show] do
       collection do
         post :check
         # 仮でgetにしてます。本来はpostです(check)
