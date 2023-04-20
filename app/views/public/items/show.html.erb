@@ -1,22 +1,20 @@
 <div class="container">
   <div class="row">
 
-   <div class="col-md-3 col-sm-6 col-12">
-    <table class="table table-borderless text-center">
-     <thead>
-      <tr>
-       <th>ジャンル検索</th>
-      </tr>
-     </thead>
-     <tbody>
-      <% @genres.each do |genre| %>
-      <tr>
-       <td><%= genre.name %></td>
-      </tr>
-      <% end %>
-     </tbody>
-    </table>
-   </div>
+   <div class="col-3 mr-5">
+      <div class="card">
+        <div class="card-header">
+          ジャンル検索
+        </div>
+        <ul class="list-group list-group-flush">
+          <% @genres.each do |genre| %>
+          <li class="list-group-item">
+            <%= link_to genre.name, genre_path(genre.id), class: 'text-reset h5' %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
 
   <div class="col-md-8 col-sm-6 col-12">
    <div class="row d-flex justify-content-center flex-wrap">

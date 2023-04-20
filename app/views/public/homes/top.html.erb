@@ -32,6 +32,24 @@
             必要になります。
           </h4>
         </div>
+        <ul class="list-group list-group-flush">
+          <% @genres.each do |genre| %>
+          <li class="list-group-item">
+            <%= link_to genre.name, genre_path(genre.id), class: 'text-reset h5' %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <div class="text-center">
+        <h1 class="display-4" style="background-color: #FAF0E6; padding: 15px 0;">ようこそ、ながのCAKEへ！</h1>
+        <%= image_tag 'toppagecake.png', alt: 'ながのケーキ', class: 'img-fluid mb-4' %>
+        <p class="lead">
+          このサイトはケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。
+        </p>
       </div>
     </div>
 
