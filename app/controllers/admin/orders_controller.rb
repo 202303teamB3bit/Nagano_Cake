@@ -14,7 +14,7 @@ class Admin::OrdersController < ApplicationController
     #if order.update(order_params)
     #   order_details.update_all(making_status: 1) if order.status == "payment_confirmation"
     # end
-
+    # 
     order.update(order_params)
     if order.status == "payment_confirmation"
       order_details.update_all(making_status: 1)
