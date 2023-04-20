@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   # 顧客用
   scope module: :public do
     # homes
