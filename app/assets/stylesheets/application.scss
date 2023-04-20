@@ -132,3 +132,31 @@ h1, h2, h3, h4, h5, h6 {
 .ship_address {
   font-size: 22px;
 }
+
+
+// orders/index
+.add-font {
+  font-family: 'Nunito', sans-serif;
+}
+
+.custom-table {
+  margin-top: 3rem;
+  border-radius: 5px;
+  overflow: hidden;
+  thead {
+    background-color: #000000;
+    th {
+      color: white;
+    }
+  }
+}
+
+.order-history-title {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.card-custom {
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

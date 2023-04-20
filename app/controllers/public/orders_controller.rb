@@ -11,7 +11,8 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    if @order.customer.cart_items.count >= 1
+
+    if  @order.customer.cart_items.count >= 1
         @order.save
         current_customer.cart_items.each do |cart_item| #カートの商品を1つずつ取り出しループ
         @order_detail = OrderDetail.new
@@ -34,15 +35,15 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details.all
   end
 
   def check
-    # address_option = params[:order][:address_option]
-    # adjusted_order_params = order_params.except(:address_option)
-    # @order = Order.new(adjusted_order_params)
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items
     @total = 0
@@ -68,7 +69,6 @@ class Public::OrdersController < ApplicationController
       render :new
     end
 
-  # Rails.logger.info "Debug: #{@order.inspect}"
   end
 
   def complete
@@ -80,6 +80,6 @@ class Public::OrdersController < ApplicationController
     params.require(:order).permit(:name, :post_code,
                                   :address, :payment_method,
                                   :shipping_fee, :billing_amont,
-                                  :customer_id)
+                                  :customer_id, :status)
   end
 end
