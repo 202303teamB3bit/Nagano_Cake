@@ -1,4 +1,6 @@
 class Admin::CustomersController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @customers = Customer.all
   end
@@ -20,6 +22,11 @@ class Admin::CustomersController < ApplicationController
       flash[:alert] = "会員情報の更新に失敗しました"
       render :edit
     end
+  end
+
+  def orders
+    @customer = Customer.find(params[:id])
+    @orders = @customer.orders.page(params[:page])
   end
 
   private

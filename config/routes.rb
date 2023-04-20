@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   # 顧客用
   scope module: :public do
     # homes
@@ -44,6 +42,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :items, except: [:destroy]
     resources :customers, only: [:index, :show, :edit, :update]
+    get 'customers/orders/:id' => 'customers#orders'
     resources :genres, only: [:index, :edit, :create, :update, :destroy, :show]
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
