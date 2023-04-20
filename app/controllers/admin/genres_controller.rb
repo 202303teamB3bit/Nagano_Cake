@@ -6,6 +6,14 @@ class Admin::GenresController < ApplicationController
     @genres = Genre.page(params[:page])
   end
 
+
+  def destroy
+    @genre = Genre.find(params[:id])
+    @genre.destroy
+    flash[:notice] = '削除が完了しました'
+    redirect_to admin_genres_path
+  end
+
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
