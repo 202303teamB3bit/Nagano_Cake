@@ -20,8 +20,9 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto text-nowrap">
         <% if customer_signed_in? %>
+          <p class="navbar-text-dark mr-5">ようこそ <%= current_customer.first_name %> さん！</p>
           <li class="nav-item">
             <%= link_to "マイページ", customers_my_page_path, class: "nav-link" %>
           </li>
