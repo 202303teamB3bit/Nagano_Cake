@@ -53,7 +53,7 @@
                 <%= f.label :name, class: "form-label" do %>
                   宛名
                 <% end %>
-                <%= f.text_field :name, class: "form-control", id: "familyName", placeholder: "", value: "", required: true %>
+                <%= f.text_field :name, class: "form-control", id: "familyName", placeholder: "", value: "" %>
                 <div class="invalid-feedback">
                   宛名
                 </div>
@@ -64,7 +64,7 @@
                   <%= f.label :post_code, class: "form-label" do %>
                     郵便番号
                   <% end %>
-                  <%= f.text_field :post_code, class: "form-control", id: "zip", placeholder: "", required: true %>
+                  <%= f.text_field :post_code, class: "form-control", id: "zip", placeholder: "" %>
                   <div class="invalid-feedback">
                     郵便番号を入力してください
                   </div>
@@ -74,7 +74,7 @@
                   <%= f.label :address, class: "form-label" do %>
                     住所
                   <% end %>
-                  <%= f.text_field :address, class: "form-control", id: "address", placeholder: "住所を入力してください", required: true %>
+                  <%= f.text_field :address, class: "form-control", id: "address", placeholder: "住所を入力してください" %>
                   <div class="invalid-feedback">
                     配送先住所を入力してください
                   </div>

@@ -24,13 +24,13 @@ class Public::OrdersController < ApplicationController
         @order_detail.save
         end
       current_customer.cart_items.destroy_all #カートの中身を削除
-      redirect_to complete_orders_path
+    end
+    
     if @order.save
       redirect_to complete_orders_path, notice: 'Thanks!!!'
     else
       flash[:alert] = '注文情報が正しく送信されませんでした。もう一度お試しください。'
       render :new
-    end
     end
   end
 
