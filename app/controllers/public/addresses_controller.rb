@@ -15,7 +15,7 @@ class Public::AddressesController < ApplicationController
       redirect_to request.referer
     else
       @customer = current_customer
-      @addresses = @customer.addresses
+      @addresses = @customer.addresses.page(params[:page])
       render :index
     end
   end
