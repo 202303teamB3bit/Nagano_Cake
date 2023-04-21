@@ -48,8 +48,6 @@ Rails.application.routes.draw do
     resources :order_details, only: [:update]
   end
 
-
-
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers, skip: [:passwords], controllers: {
