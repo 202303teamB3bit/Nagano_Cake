@@ -1,19 +1,23 @@
 
 // おしゃれなフォントインストールしてみた　ここから
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,700&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yomogi&display=swap');
 
 li {
   list-style: none;
 }
 
-
-body {
-  font-family: 'Roboto', sans-serif;
+* {
+  font-family: 'Yomogi', cursive;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
-}
+// body {
+//   font-family: 'Roboto', sans-serif;
+// }
+
+// h1, h2, h3, h4, h5, h6 {
+//   font-family: 'Montserrat', sans-serif;
+// }
 
 .navbar-custom {
   background-color: #f8d7da;
