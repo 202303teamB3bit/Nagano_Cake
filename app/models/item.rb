@@ -26,4 +26,9 @@ class Item < ApplicationRecord
     (price * 1.1).floor
   end
 
+  # ransack検索用（なかじ）
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "genre_id", "id", "introduction", "is_active", "name", "price", "updated_at"]
+  end
+
 end

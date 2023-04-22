@@ -1,3 +1,9 @@
+<%= search_form_for @q do |f| %>
+    <%= f.label :name_cont %>
+    <%= f.search_field :name_cont %>
+    <%= f.submit %>
+<% end %>
+
 <div class="container mt-5">
   <div class="row">
     <div class="col-3">
