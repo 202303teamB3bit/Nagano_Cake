@@ -1,4 +1,7 @@
 <div class="container">
+
+  <%#= render 'layouts/errors', obj: @obj %>
+
   <h2>会員情報編集</h2>
 
   <%= form_with model:@customer, url: customers_info_path do |f| %>

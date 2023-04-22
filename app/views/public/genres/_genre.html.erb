@@ -1,0 +1,12 @@
+      <div class="card">
+        <div class="card-header">
+          ジャンル検索
+        </div>
+        <ul class="list-group list-group-flush">
+          <% genres.each do |genre| %>
+          <li class="list-group-item">
+            <%= link_to genre.name, genre_path(genre.id), class: 'text-reset h5' %>
+          </li>
+          <% end %>
+        </ul>
+      </div>

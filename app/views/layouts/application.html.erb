@@ -79,7 +79,6 @@
             <% end %>
           </li>
 
-
         </ul>
       </div>
     </nav>
@@ -101,18 +100,7 @@
   </body>
 
 <footer>
-  <div class="container mt-5">
-    <div class="row">
-      <div class="mx-auto">
-        <% if admin_signed_in? %>
-          <%= link_to "管理者ページ", admin_root_path, class: "nav-link" %>
-        <% else %>
-          <%= link_to "管理者ページ", admin_session_path, class: "nav-link" %>
-        <% end %>
-        <p>CopyRight 3bit.inc</p>
-      </div>
-    </div>
-  </div>
+  <%= render 'layouts/fooder' %>
 </footer>
 
 </html>

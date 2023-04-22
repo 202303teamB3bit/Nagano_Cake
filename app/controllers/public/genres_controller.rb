@@ -3,6 +3,7 @@ class Public::GenresController < ApplicationController
   def show
     @genre = Genre.find_by(id: params[:id])
     # @genre = Genre.find(params[:id]) これでもいい
+    @genres = Genre.all
     if @genre
       @items = @genre.item
     else
