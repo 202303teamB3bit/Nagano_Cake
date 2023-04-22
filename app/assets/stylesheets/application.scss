@@ -214,21 +214,8 @@ h1, h2, h3, h4, h5, h6 {
 //   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 // }
 
-// public/homes/topの背景画像　全体表示
-.top {
-  background-image: url('top.jpeg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  min-height: 85vh;
-}
-
+// public/homes/topの画像全体表示
 .top_image {
   width: 100%;
   min-height: 85vh;
 }
-
- .top-content {
-   text-align: center;
- }
