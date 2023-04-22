@@ -8,17 +8,41 @@
         <% if customer_signed_in? %>
           <p class="navbar-text-dark mr-5">ようこそ <%= current_customer.first_name %> さん！</p>
           <li class="nav-item">
-            <%= link_to "マイページ", customers_my_page_path, class: "nav-link" %>
+            <%= link_to customers_my_page_path, class: "nav-link" do %>
+              <i class="fas fa-user-circle fa-lg" style="color: #f5cab3;"></i> マイページ
+            <% end %>
           </li>
+
           <li class="nav-item">
-            <%= link_to "商品一覧", items_path, class: "nav-link" %>
+            <%= link_to items_path, class: "nav-link" do %>
+            <i class="fas fa-birthday-cake fa-lg" style="color: #f5cab3;"></i> 商品一覧
+            <% end %>
           </li>
+
           <li class="nav-item">
-            <%= link_to "カート", cart_items_path, class: "nav-link" %>
+            <%= link_to cart_items_path, class: "nav-link" do %>
+            <i class="fas fa-shopping-cart fa-lg" style="color: #f5cab3;"></i> カート
+            <% end %>
           </li>
+
           <li class="nav-item">
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
+            <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link" do %>
+            <i class="fas fa-sign-out-alt fa-lg" style="color: #f5cab3;"></i> ログアウト
+            <% end %>
           </li>
+
+
+          <li class="nav-item col-md-4">
+            <div class="search_form">
+              <%= form_with url: search_path, local: true, method: :get, class: "d-flex" do |f| %>
+                <%= f.text_field :word, class: "form-control me-2" %>
+                <%= f.hidden_field :range, value: "商品"%> <!-- 商品しか検索できないように設定-->
+                <%= f.hidden_field :search, value: "partial"%> <!-- 部分一致しかできないように設定-->
+                <%= f.submit "検索", class: "btn btn-outline-success" %>
+              <% end %>
+            </div>
+          </li>
+
         <% elsif admin_signed_in? %>
           <li class="nav-item">
             <%= link_to "商品一覧", admin_items_path, class: "nav-link" %>
@@ -35,31 +59,56 @@
           <li class="nav-item">
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
           </li>
+          <li class="nav-item col-md-4">
+            <div class="search_form">
+              <%= form_with url: admin_search_path, local: true, method: :get, class: "d-flex" do |f| %>
+                <%= f.text_field :word, class: "form-control me-2" %>
+                <%= f.hidden_field :range, value: "商品"%> <!-- 商品しか検索できないように設定-->
+                <%= f.hidden_field :search, value: "partial"%> <!-- 部分一致しかできないように設定-->
+                <%= f.submit "検索", class: "btn btn-outline-success" %>
+              <% end %>
+            </div>
+          </li>
         <% else %>
+
           <li class="nav-item">
-            <%= link_to "About", about_path, class: "nav-link" %>
+            <%= link_to about_path, class: "nav-link" do %>
+            <i class="fas fa-book-spells fa-lg" style="color: #f5cab3;"></i> About
+            <% end %>
           </li>
+
           <li class="nav-item">
-            <%= link_to "商品一覧", items_path, class: "nav-link" %>
+            <%= link_to items_path, class: "nav-link" do %>
+            <i class="fas fa-birthday-cake fa-lg" style="color: #f5cab3;"></i> 商品一覧
+            <% end %>
           </li>
+
           <li class="nav-item">
-            <%= link_to "新規登録", new_customer_registration_path, class: "nav-link" %>
+            <%= link_to new_customer_registration_path, class: "nav-link" do %>
+            <i class="fas fa-user-plus fa-lg" style="color: #f5cab3;"></i> 新規登録
+            <% end %>
           </li>
+
           <li class="nav-item">
-            <%= link_to "ログイン", new_customer_session_path, class: "nav-link" %>
+            <%= link_to new_customer_session_path, class: "nav-link" do %>
+            <i class="far fa-sign-in-alt fa-lg" style="color: #f5cab3;"></i> ログイン
           </li>
-        <% end %>
+          <% end %>
 
           <li class="nav-item col-md-4">
-              <div class="search_form">
-                <%= form_with url: search_path, local: true, method: :get, class: "d-flex" do |f| %>
-                  <%= f.text_field :word, class: "form-control me-2" %>
-                  <%= f.hidden_field :range, value: "商品"%> <!-- 商品しか検索できないように設定-->
-                  <%= f.hidden_field :search, value: "partial"%> <!-- 部分一致しかできないように設定-->
-                  <%= f.submit "検索", class: "btn btn-outline-success" %>
-                <% end %>
-              </div>
+            <div class="search_form">
+              <%= form_with url: search_path, local: true, method: :get, class: "d-flex" do |f| %>
+                <%= f.text_field :word, class: "form-control me-2" %>
+                <%= f.hidden_field :range, value: "商品"%> <!-- 商品しか検索できないように設定-->
+                <%= f.hidden_field :search, value: "partial"%> <!-- 部分一致しかできないように設定-->
+                <%= f.submit "検索", class: "btn btn-outline-success" %>
+              <% end %>
+            </div>
           </li>
+
+        <% end %>
+
+
 
         </ul>
       </div>
