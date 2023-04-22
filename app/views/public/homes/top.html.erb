@@ -1,33 +1,21 @@
-<div class="container mt-5">
-  <div class="row">
+<div>
+  <%= image_tag 'top.jpeg' , class: 'top_image' %>
+</div>
 
-    <div class="col-3">
-      <%= render 'public/genres/genre', genres: @genres %>
-    </div>
-    
-       <div>
-        <div class="text-center mt-5">
-         <h1><span style="background-color: #FAF0E6;">ようこそ、ながのCAKEへ！</h1></span>
-          <%= image_tag 'toppagecake.png', alt: 'ながのケーキ', class: 'img-fluid'%>
-         <div class="cakelogo">
-          <h4 class="cake-sentence">
-            このサイトはケーキ販売の<br>
-            ECサイトになります。<br>
-            会員でない方も商品の<br>
-            閲覧はできますが、<br>
-            購入には会員登録が<br>
-            必要になります。
-          </h4>
-          </div>
-        </div>
-      </div>
-      
+<div class="container">
+  <div class="text-center mt-5">
+    <h4 class="">
+      このサイトはケーキ販売のECサイトになります。<br>
+      会員でない方も商品の閲覧はできますが、<br>
+      購入には会員登録が必要になります。
+    </h4>
     </div>
   </div>
+</div>
 
-  <div class="container mt-5">
+<div class="container mt-5">
   <h2 class="text-center">🎉新着商品🎉</h2>
-  <div class="row">
+  <div class="row d-flex align-items-center justify-content-center">
     <%= render 'public/items/index', items: @items %>
   </div>
 </div>
