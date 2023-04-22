@@ -34,7 +34,7 @@ Rails.application.routes.draw do
         delete "destroy_all"
       end
     end
-    
+
     # サーチ用
     get "search" => "searches#search"
 
@@ -49,6 +49,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :edit, :create, :update, :destroy, :show]
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
+    get "search" => "searches#search"
   end
 
 
