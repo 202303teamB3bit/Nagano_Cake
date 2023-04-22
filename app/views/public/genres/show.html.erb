@@ -1,18 +1,11 @@
-<div class="container">
-  <h2><%= @genre.name %>の商品一覧</h2>
+<div class="container mt-5">
   <div class="row">
-    <% @items.each do |item| %>
-      <div class="col-md-3 mb-4">
-          <div class="card">
-            <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_image(200, 200), alt: item.name, class: 'card-img-top img-fluid' %>
-            <% end %>
-            <div class="card-body">
-              <h5 class="card-title"><%= item.name %></h5>
-              <p class="card-text">¥ <%= number_with_delimiter(item.price, delimiter: ',') %></p>
-            </div>
-          </div>
-        </div>
-    <% end %>
+    <div class="col-3">
+      <%= render 'public/genres/genre', genres: @genres %>
+    </div>
+    <div class="col-md-9">
+      <h2>商品一覧 <small class="text-muted">（全 <%= @items.count %> 件）</small></h2>
+      <%= render 'public/items/index', items: @items %>
+    </div>
   </div>
 </div>

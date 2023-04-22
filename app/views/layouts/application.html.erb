@@ -7,7 +7,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= favicon_link_tag 'strawberry-cake.ico' %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -67,7 +66,6 @@
         <% end %>
 
           <li class="nav-item col-md-4">
-            <% if customer_signed_in? %>
               <div class="search_form">
                 <%= form_with url: search_path, local: true, method: :get, class: "d-flex" do |f| %>
                   <%= f.text_field :word, class: "form-control me-2" %>
@@ -76,9 +74,7 @@
                   <%= f.submit "検索", class: "btn btn-outline-success" %>
                 <% end %>
               </div>
-            <% end %>
           </li>
-
 
         </ul>
       </div>
@@ -101,19 +97,7 @@
   </body>
 
 <footer>
-  <div class="container mt-5">
-    <div class="row">
-      <div class="mx-auto">
-        <% if admin_signed_in? %>
-          <%= link_to "管理者ページ", admin_root_path, class: "nav-link" %>
-        <% else %>
-          <%= link_to "管理者ページ", admin_session_path, class: "nav-link" %>
-        <% end %>
-        <p>CopyRight 3bit.inc</p>
-      </div>
-    </div>
-  </div>
+  <%= render 'layouts/fooder' %>
 </footer>
 
 </html>
-

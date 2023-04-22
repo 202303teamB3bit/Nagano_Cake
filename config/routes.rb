@@ -52,8 +52,6 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
   end
 
-
-
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers, skip: [:passwords], controllers: {
