@@ -78,7 +78,7 @@
         <tr>
           <td><%= detail.item.name %></td>
           <td>¥ <%= detail.purchase_price.floor.to_s(:delimited) %></td>
-          <td><%= detail.quantity %> 個</td>
+          <td><%= detail.quantity %> </td>
           <td>¥ <%= (detail.purchase_price * detail.quantity).round.to_s(:delimited) %>
           </td>
         </tr>

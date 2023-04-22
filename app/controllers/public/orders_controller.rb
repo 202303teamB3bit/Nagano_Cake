@@ -25,7 +25,7 @@ class Public::OrdersController < ApplicationController
         end
       current_customer.cart_items.destroy_all #カートの中身を削除
     end
-    
+
     if @order.save
       redirect_to complete_orders_path, notice: 'Thanks!!!'
     else
