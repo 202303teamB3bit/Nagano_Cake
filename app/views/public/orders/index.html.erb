@@ -28,7 +28,7 @@
                 <%= f.item.name %><br>
               <% end %>
             </td>
-            <td><%= number_with_delimiter(order.total_price, delimiter: ',') %>円</td>
+            <td><%= number_with_delimiter(order.total_price + order.shipping_fee) %>円</td>
             <td><%= order.status_i18n %></td>
             <td>
               <div class="d-flex justify-content-center">
