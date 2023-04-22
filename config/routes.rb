@@ -34,6 +34,9 @@ Rails.application.routes.draw do
         delete "destroy_all"
       end
     end
+    
+    # サーチ用
+    get "search" => "searches#search"
 
   end
 

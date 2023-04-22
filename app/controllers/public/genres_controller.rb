@@ -2,6 +2,7 @@ class Public::GenresController < ApplicationController
 
   def show
     @genre = Genre.find_by(id: params[:id])
+    # @genre = Genre.find(params[:id]) これでもいい
     if @genre
       @items = @genre.item
     else
