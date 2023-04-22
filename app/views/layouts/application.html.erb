@@ -66,12 +66,17 @@
           </li>
         <% end %>
 
-
           <li class="nav-item col-md-4">
-          <%= form_with url: root_path, method: :get, local: true, class: "d-flex" do |f| %>
-            <%= f.search_field :query, class: "form-control me-2", placeholder: "検索", aria: { label: "Search" } %>
-            <%= f.submit "検索", class: "btn btn-outline-success" %>
-          <% end %>
+            <% if customer_signed_in? %>
+              <div class="search_form">
+                <%= form_with url: search_path, local: true, method: :get, class: "d-flex" do |f| %>
+                  <%= f.text_field :word, class: "form-control me-2" %>
+                  <%= f.hidden_field :range, value: "商品"%> <!-- 商品しか検索できないように設定-->
+                  <%= f.hidden_field :search, value: "partial"%> <!-- 部分一致しかできないように設定-->
+                  <%= f.submit "検索", class: "btn btn-outline-success" %>
+                <% end %>
+              </div>
+            <% end %>
           </li>
 
 
