@@ -6,12 +6,13 @@ class Item < ApplicationRecord
   has_one_attached :image
   enum is_active: { sale: true, discontinued: false }
 
-
+  validates :image,presence:         true
   validates :name, presence:         true
   validates :introduction, presence: true
   validates :price, presence:        true
   validates :is_active, presence:    true
   validates :genre_id, presence:     true
+  
 
   def get_image(width, height)
     unless image.attached?
