@@ -5,7 +5,7 @@
       <h1>マイページ</h1>
 
       <div class="d-flex flex-row">
-        <p>登録情報</p>
+        <p class="mr-2"><strong>登録情報</p></strong>
         <P class="ml-3"><%= link_to '編集する', customers_info_edit_path, class: "btn btn-sm btn-success" %></P>
       </div>
 
@@ -39,11 +39,11 @@
       <table>
         <tr>
           <th style="width: 30%">配送先</th>
-          <td style="width: 40%"><%= link_to "一覧を見る", addresses_path, class: "btn btn-sm btn-primary" %></td>
+          <td style="width: 40%"><%= link_to "一覧を見る", addresses_path, class: "btn btn-sm btn-info" %></td>
         </tr>
         <tr>
           <th style="width: 30%">注文履歴</th>
-          <td style="width: 40%"><%= link_to "一覧を見る", orders_path, class: "btn btn-sm btn-primary" %></td>
+          <td style="width: 40%"><%= link_to "一覧を見る", orders_path, class: "btn btn-sm btn-info" %></td>
         </tr>
       </table>
 
