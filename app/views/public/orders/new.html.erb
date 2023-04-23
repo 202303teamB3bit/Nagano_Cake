@@ -36,6 +36,10 @@
                  <%= f.radio_button :address_option, 1 %>
                  <%= f.label :order_address, "登録先住所から選択" %><br>
                  <%= f.collection_select :customer_id, @addresses, :id, :address_display %><br>
+
+                 <%#= f.collection_select :customer_id, @addresses, :id, :address_display, prompt: "住所を選択してください" %>
+                 <%= f.select :address_id,options_from_collection_for_select(@customer.addresses.all,:id,:address_display), class: "", style: "background-color:#fcfced" %>
+
                </div>
 
              </p>

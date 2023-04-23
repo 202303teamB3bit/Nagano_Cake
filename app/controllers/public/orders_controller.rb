@@ -30,6 +30,8 @@ class Public::OrdersController < ApplicationController
       redirect_to complete_orders_path, notice: 'Thanks!!!'
     else
       flash[:alert] = '注文情報が正しく送信されませんでした。もう一度お試しください。'
+      @customer = Customer.find(current_customer.id)
+      @addresses = current_customer.addresses
       render :new
     end
   end
@@ -45,38 +47,42 @@ class Public::OrdersController < ApplicationController
 
   end
 
- def check
+
+def check
+
   @order = Order.new(order_params)
-  @customer = Customer.find(current_customer.id)
-  @addresses = current_customer.addresses
+
+  @order.customer_id = current_customer.id
+
   @cart_items = current_customer.cart_items
+
   @total = 0
 
+
+
   if params[:order][:address_option] == "0"
-    @order.post_code = current_customer.post_code
-    @order.address = current_customer.address
-    @order.name = current_customer.first_name + current_customer.last_name
+
+   @order.post_code = current_customer.post_code
+
+   @order.address = current_customer.address
+
+   @order.name = current_customer.first_name + current_customer.last_name
+
+
 
   elsif params[:order][:address_option] == "1"
-    if ship = Address.find_by(id: params[:order][:address])
-      @order.post_code = ship.post_code
-      @order.address = ship.address
-      @order.name = ship.name
-    else
-      @addresses = current_customer.addresses
-      flash[:notice] = '住所が選択されていません'
-      render :new
-      return
-    end
+   ship = Address.find(params[:order][:address_id])
+   @order.post_code = ship.post_code
+   @order.address = ship.address
+   @order.name = ship.name
 
   elsif params[:order][:address_option] == "2"
-    @order.post_code = params[:order][:post_code]
-    @order.address = params[:order][:address]
-    @order.name = params[:order][:name]
-
+   @order.post_code = params[:order][:post_code]
+   @order.address = params[:order][:address]
+   @order.name = params[:order][:name]
   else
-    @order = Order.new(order_params)
-    render :new
+   @order = Order.new(order_params)
+   render :new
   end
 end
 
@@ -92,4 +98,5 @@ end
                                   :shipping_fee, :billing_amont,
                                   :customer_id, :status)
   end
+
 end
