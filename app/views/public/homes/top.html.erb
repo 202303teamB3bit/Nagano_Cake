@@ -1,6 +1,4 @@
-
-<%= image_tag 'top.jpeg' , class: 'img-responsive' %>
-
+<%= image_tag 'top.jpeg' , class: 'container-fluid' %>
 
 <div class="container">
   <div class="text-center mt-5">
@@ -14,7 +12,7 @@
 </div>
 
 <div class="container mt-5">
-  <h2 class="text-center">🎉新着商品🎉</h2>
+  <h1 class="text-center"><strong>新着商品</strong></h1>
   <div class="row d-flex align-items-center justify-content-center">
     <%= render 'public/items/index', items: @items %>
   </div>
