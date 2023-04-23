@@ -47,34 +47,45 @@ class Public::OrdersController < ApplicationController
 
   end
 
-  def check
-    @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
-    @cart_items = current_customer.cart_items
-    @total = 0
 
-    if params[:order][:address_option] == "0"
-      @order.post_code = current_customer.post_code
-      @order.address = current_customer.address
-      @order.name = current_customer.first_name + current_customer.last_name
+def check
 
-    elsif params[:order][:address_option] == "1"
-      ship = Address.find(params[:order][:address_id])
-      @order.post_code = ship.post_code
-      @order.address = ship.address
-      @order.name = ship.name
+  @order = Order.new(order_params)
 
-    elsif params[:order][:address_option] == "2"
-      @order.post_code = params[:order][:post_code]
-      @order.address = params[:order][:address]
-      @order.name = params[:order][:name]
-    
-    else
-      @order = Order.new(order_params)
-      render :new
-    end
+  @order.customer_id = current_customer.id
 
+  @cart_items = current_customer.cart_items
+
+  @total = 0
+
+
+
+  if params[:order][:address_option] == "0"
+
+   @order.post_code = current_customer.post_code
+
+   @order.address = current_customer.address
+
+   @order.name = current_customer.first_name + current_customer.last_name
+
+
+
+  elsif params[:order][:address_option] == "1"
+   ship = Address.find(params[:order][:address_id])
+   @order.post_code = ship.post_code
+   @order.address = ship.address
+   @order.name = ship.name
+
+  elsif params[:order][:address_option] == "2"
+   @order.post_code = params[:order][:post_code]
+   @order.address = params[:order][:address]
+   @order.name = params[:order][:name]
+  else
+   @order = Order.new(order_params)
+   render :new
   end
+end
+
 
   def complete
   end
