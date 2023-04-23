@@ -45,33 +45,41 @@ class Public::OrdersController < ApplicationController
 
   end
 
-  def check
-    @order = Order.new(order_params)
-    @cart_items = current_customer.cart_items
-    @total = 0
+ def check
+  @order = Order.new(order_params)
+  @customer = Customer.find(current_customer.id)
+  @addresses = current_customer.addresses
+  @cart_items = current_customer.cart_items
+  @total = 0
 
-    if params[:order][:address_option] == "0"
-      @order.post_code = current_customer.post_code
-      @order.address = current_customer.address
-      @order.name = current_customer.first_name + current_customer.last_name
+  if params[:order][:address_option] == "0"
+    @order.post_code = current_customer.post_code
+    @order.address = current_customer.address
+    @order.name = current_customer.first_name + current_customer.last_name
 
-    elsif params[:order][:address_option] == "1"
-      ship = Address.find(params[:order][:address])
+  elsif params[:order][:address_option] == "1"
+    if ship = Address.find_by(id: params[:order][:address])
       @order.post_code = ship.post_code
       @order.address = ship.address
       @order.name = ship.name
-
-    elsif params[:order][:address_option] == "2"
-      @order.post_code = params[:order][:post_code]
-      @order.address = params[:order][:address]
-      @order.name = params[:order][:name]
-
     else
-      @order = Order.new(order_params)
+      @addresses = current_customer.addresses
+      flash[:notice] = '住所が選択されていません'
       render :new
+      return
     end
 
+  elsif params[:order][:address_option] == "2"
+    @order.post_code = params[:order][:post_code]
+    @order.address = params[:order][:address]
+    @order.name = params[:order][:name]
+
+  else
+    @order = Order.new(order_params)
+    render :new
   end
+end
+
 
   def complete
   end
