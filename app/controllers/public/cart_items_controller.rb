@@ -24,7 +24,7 @@ class Public::CartItemsController < ApplicationController
     @cart_items = current_customer.cart_items
     @cart_items.destroy_all
     # current_customer.cart_items.destroy_all
-    redirect_to root_path
+    redirect_to request.referer
   end
 
   def create
