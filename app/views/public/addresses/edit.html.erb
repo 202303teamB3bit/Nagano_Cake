@@ -1,6 +1,6 @@
 <div class="container">
   <h2>配送先編集</h2>
-
+  <%= render 'layouts/errors', obj: @address %>
   <%= form_with model:@address, url: address_path(@address) do |f| %>
 
     <table class="table table-borderless">
@@ -9,7 +9,7 @@
           <td><%= f.text_field :post_code, autocomplete: "post_code" %></td>
         </tr>
         <tr>
-          <td>郵便番号(ハイフンなし)</td>
+          <td>住所</td>
           <td><%= f.text_field :address, autocomplete: "address", size: 60 %></td>
         </tr>
         <tr>
