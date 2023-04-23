@@ -1,6 +1,8 @@
+<div class="text-center mb-5"></div>
+
 <div class="container">
   <%= render 'layouts/errors', obj: @address %>
-  <h2>配送先登録 / 一覧</h2>
+  <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">配送先登録 / 一覧</h2>
   <div class="row">
     <%= form_with model:@address, url: addresses_path, method: :post do |f| %>
       <table class="table table-borderless">
@@ -23,7 +25,7 @@
 
   <div class="row">
     <table class="table table-bordered">
-      <thead>
+      <thead class="table-danger">
         <tr>
           <th>郵便番号</th>
           <th>住所</th>
