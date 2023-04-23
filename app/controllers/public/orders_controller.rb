@@ -5,7 +5,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @customer = Customer.find(current_customer.id)
     @addresses = current_customer.addresses
-
+    @cart = current_customer.cart_items
   end
 
   def create
@@ -36,11 +36,13 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders
+
   end
 
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details.all
+
   end
 
   def check
