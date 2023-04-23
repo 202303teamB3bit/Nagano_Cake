@@ -30,6 +30,8 @@ class Public::OrdersController < ApplicationController
       redirect_to complete_orders_path, notice: 'Thanks!!!'
     else
       flash[:alert] = '注文情報が正しく送信されませんでした。もう一度お試しください。'
+      @customer = Customer.find(current_customer.id)
+      @addresses = current_customer.addresses
       render :new
     end
   end
@@ -66,7 +68,7 @@ class Public::OrdersController < ApplicationController
       @order.post_code = params[:order][:post_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
-
+    
     else
       @order = Order.new(order_params)
       render :new
