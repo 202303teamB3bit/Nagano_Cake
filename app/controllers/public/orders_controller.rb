@@ -45,6 +45,7 @@ class Public::OrdersController < ApplicationController
 
   def check
     @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
     @cart_items = current_customer.cart_items
     @total = 0
 
@@ -54,7 +55,7 @@ class Public::OrdersController < ApplicationController
       @order.name = current_customer.first_name + current_customer.last_name
 
     elsif params[:order][:address_option] == "1"
-      ship = Address.find(params[:order][:address])
+      ship = Address.find(params[:order][:address_id])
       @order.post_code = ship.post_code
       @order.address = ship.address
       @order.name = ship.name
@@ -82,4 +83,5 @@ class Public::OrdersController < ApplicationController
                                   :shipping_fee, :billing_amont,
                                   :customer_id, :status)
   end
+
 end
