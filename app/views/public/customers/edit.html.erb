@@ -1,8 +1,10 @@
+<div class="text-center mb-5"></div>
+
 <div class="container">
 
   <%= render 'layouts/errors', obj: @customer %>
 
-  <h2>会員情報編集</h2>
+  <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">会員情報編集</h2>
 
   <%= form_with model:@customer, url: customers_info_path do |f| %>
     <div class="row form-group">
@@ -39,8 +41,8 @@
 
     <div class="row form-group">
       <p class="col-md-2"></p>
-      <div class="col-md-3"><%= f.submit "編集内容を保存"%></div>
-      <div class="col-md-3"><%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-sm btn-danger"%></div>
+      <div class="col-md-3"><%= f.submit "編集内容を保存", class: "btn btn-sm btn-success"%></div>
+      <div class="col-md-3"><%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-sm btn-danger" %></div>
     </div>
 
   <% end %>
