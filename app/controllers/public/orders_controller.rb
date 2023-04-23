@@ -5,7 +5,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @customer = Customer.find(current_customer.id)
     @addresses = current_customer.addresses
-
+    @cart = current_customer.cart_items
   end
 
   def create
@@ -36,15 +36,18 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders
+
   end
 
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details.all
+
   end
 
   def check
     @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
     @cart_items = current_customer.cart_items
     @total = 0
 
@@ -54,7 +57,7 @@ class Public::OrdersController < ApplicationController
       @order.name = current_customer.first_name + current_customer.last_name
 
     elsif params[:order][:address_option] == "1"
-      ship = Address.find(params[:order][:customer_id])
+      ship = Address.find(params[:order][:address_id])
       @order.post_code = ship.post_code
       @order.address = ship.address
       @order.name = ship.name
@@ -82,4 +85,5 @@ class Public::OrdersController < ApplicationController
                                   :shipping_fee, :billing_amont,
                                   :customer_id, :status)
   end
+
 end
