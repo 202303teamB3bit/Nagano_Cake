@@ -1,6 +1,14 @@
-<h4>ジャンル編集</h4>
-<%= form_with model: @genre, url: admin_genre_path, method: :patch do |f| %>
-  <%= f.label :name, 'ジャンル名' %>
-  <%= f.text_field :name %>
-  <%= f.submit "変更を保存", class: "btn btn-success" %>
-<% end %>
+<div class="text-center mb-5"></div>
+<div class="container">
+
+  <div class="row">
+    <%= render 'layouts/errors', obj: @genre %>
+  </div>
+
+  <h4 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">ジャンル編集</h4>
+  <%= form_with model: @genre, url: admin_genre_path, method: :patch do |f| %>
+    <%= f.label :name, 'ジャンル名' %>
+    <%= f.text_field :name %>
+    <%= f.submit "変更を保存", class: "btn btn-success" %>
+  <% end %>
+</div>
