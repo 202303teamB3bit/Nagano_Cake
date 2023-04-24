@@ -1,0 +1,110 @@
+<body class="bg-body-tertiary">
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <h1>注文情報入力</h1>
+        <h3 class="lead">この度はながのケーキをお選び頂き誠にありがとうございます🎉</h3>
+      </div>
+
+
+
+        <div class="mx-auto col-md-8">
+          <h4 class="mb-5">請求先住所</h4>
+        <%= form_with model: @order, url: check_orders_path, method: :post, local: true, class: "needs-validation", novalidate: true do |f| %>
+
+           <h1>お届け先</h1>
+               <!--自身の住所の場合＝＝０として設定する。-->
+
+               <%= f.radio_button :address_option, 0, checked: "checked" %>
+               <%= f.label :order_address, "ご自身の住所" %><br>
+
+
+             <div class="ship_address">
+               〒<%= @customer.post_code %>
+               <%= @customer.address %>
+
+
+
+               <div>
+               <%= @customer.first_name %>
+               <%= @customer.last_name %>
+               </div>
+               </div>
+
+
+               <div>
+                 <%= f.radio_button :address_option, 1 %>
+                 <%= f.label :order_address, "登録先住所から選択" %><br>
+                 <br>
+
+                 <%#= f.collection_select :customer_id, @addresses, :id, :address_display, prompt: "住所を選択してください" %>
+                 <%= f.select :address_id,options_from_collection_for_select(@customer.addresses.all,:id,:address_display), class: "", style: "background-color:#fcfced" %>
+
+               </div>
+
+             </p>
+
+             <div>
+               <%= f.radio_button :address_option, 2 %>
+               <%= f.label :order_address, "新しいお届け先" %>
+             </div>
+
+
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <%= f.label :name, class: "form-label" do %>
+                  宛名
+                <% end %>
+                <%= f.text_field :name, class: "form-control", id: "familyName", placeholder: "", value: "" %>
+                <div class="invalid-feedback">
+                  宛名
+                </div>
+              </div>
+
+
+              <div class="col-md-3">
+                  <%= f.label :post_code, class: "form-label" do %>
+                    郵便番号
+                  <% end %>
+                  <%= f.text_field :post_code, class: "form-control", id: "zip", placeholder: "" %>
+                  <div class="invalid-feedback">
+                    郵便番号を入力してください
+                  </div>
+                </div>
+
+               <div class="col-12">
+                  <%= f.label :address, class: "form-label" do %>
+                    住所
+                  <% end %>
+                  <%= f.text_field :address, class: "form-control", id: "address", placeholder: "住所を入力してください" %>
+                  <div class="invalid-feedback">
+                    配送先住所を入力してください
+                  </div>
+                </div>
+
+                </div>
+
+
+
+
+                  <hr class="my-4">
+                    <h4 class="mb-3">お支払い方法</h4>
+                      <div class="my-3">
+                         <div class="form-group">
+                            <%= f.label :payment_method_credit_card, 'クレジットカード' %>
+                            <%= f.radio_button :payment_method, :credit_card %>
+                            <%= f.label :payment_method_transfer, '銀行振込' %>
+                            <%= f.radio_button :payment_method, :transfer %>
+                          </div>
+
+                    </div>
+
+
+
+
+                      <hr class="my-4">
+                        <%= f.submit "精算を続ける", class: "w-100 btn btn-success btn-lg", type: "submit" %>
+                        <% end %>
+                                </div>
+                              </div>
+                            </main>

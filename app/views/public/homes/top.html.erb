@@ -1,2 +1,25 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<%= image_tag 'top.jpeg' , class: 'container-fluid' %>
+
+<div class="container">
+  <div class="text-center mt-5">
+    <h4 class="">
+      このサイトはケーキ販売のECサイトになります。<br>
+      会員でない方も商品の閲覧はできますが、<br>
+      購入には会員登録が必要になります。
+    </h4>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <h1 class="text-center"><strong>新着商品</strong></h1>
+  <div class="row d-flex align-items-center justify-content-center">
+    <%= render 'public/items/index', items: @items %>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="text-right">
+    <%= link_to '全ての商品を見る', items_path, class: 'btn btn-outline-secondary' %>
+  </div>
+</div>

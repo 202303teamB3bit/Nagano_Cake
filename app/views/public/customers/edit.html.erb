@@ -1,0 +1,50 @@
+<div class="text-center mb-5"></div>
+
+<div class="container">
+
+  <%= render 'layouts/errors', obj: @customer %>
+
+  <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">会員情報編集</h2>
+
+  <%= form_with model:@customer, url: customers_info_path do |f| %>
+    <div class="row form-group">
+      <p class="col-md-2">氏名</p>
+      <div class="col-md-3"><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></div>
+      <div class="col-md-4"><%= f.text_field :last_name, autocomplete: "last_name" %></div>
+    </div>
+
+    <div class="row form-group">
+      <p class="col-md-2"> フリガナ</p>
+      <div class="col-md-3"><%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %></div>
+      <div class="col-md-4"><%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %></div>
+    </div>
+
+    <div class="row form-group">
+      <p class="col-md-2">郵便番号</p>
+      <div class="col-md-3"><%= f.text_field :post_code, autocomplete: "post_code" %></div>
+    </div>
+
+    <div class="row form-group">
+      <p class="col-md-2">住所</p>
+      <div class="col-md-3"><%= f.text_field :address, autocomplete: "address", size: 60 %></div>
+    </div>
+
+    <div class="row form-group">
+      <p class="col-md-2">電話番号</p>
+      <div class="col-md-3"><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %></div>
+    </div>
+
+    <div class="row form-group">
+      <p class="col-md-2">メールアドレス</p>
+      <div class="col-md-3"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></div>
+    </div>
+
+    <div class="row form-group">
+      <p class="col-md-2"></p>
+      <div class="col-md-3"><%= f.submit "編集内容を保存", class: "btn btn-sm btn-success"%></div>
+      <div class="col-md-3"><%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-sm btn-danger" %></div>
+    </div>
+
+  <% end %>
+
+</div>

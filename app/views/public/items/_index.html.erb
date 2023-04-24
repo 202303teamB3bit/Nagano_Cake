@@ -1,0 +1,17 @@
+
+
+      <div class="row">
+        <% items.each do |item| %>
+        <div class="col-md-3 mb-4 block-hover ">
+
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_image(200, 200), alt: item.name, class: 'card-img-top img-fluid' %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= item.name %></h5>
+              <p class="card-text">¥ <%= number_with_delimiter(item.price, delimiter: ',') %></p>
+            </div>
+
+        </div>
+        <% end %>
+      </div>

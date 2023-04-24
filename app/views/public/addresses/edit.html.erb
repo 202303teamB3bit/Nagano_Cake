@@ -1,0 +1,27 @@
+<div class="text-center mb-5"></div>
+
+<div class="container">
+  <h2 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">配送先編集</h2>
+  <%= render 'layouts/errors', obj: @address %>
+  <%= form_with model:@address, url: address_path(@address) do |f| %>
+
+    <table class="table table-borderless">
+        <tr>
+          <td>郵便番号<br>(ハイフンなし)</td>
+          <td><%= f.text_field :post_code, autocomplete: "post_code" %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= f.text_field :address, autocomplete: "address", size: 60 %></td>
+        </tr>
+        <tr>
+          <td>宛名</td>
+          <td><%= f.text_field :name, autocomplete: "name" %></td>
+        </tr>
+        <tr class="md-3">
+          <td><%= f.submit "変更内容を保存", class: "btn btn-sm btn-success"%></td>
+        </tr>
+      </table>
+  <% end %>
+
+</div>

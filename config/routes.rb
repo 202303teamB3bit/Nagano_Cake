@@ -2,13 +2,54 @@ Rails.application.routes.draw do
 
   # 顧客用
   scope module: :public do
+    # homes
     root to: 'homes#top'
     get '/about' => 'homes#about'
+    # customers
+    get '/customers/my_page' => 'customers#show'
+    get '/customers/info/edit' => 'customers#edit'
+    patch '/customers/info' => 'customers#update'
+    get '/customers/unsubscribe' => 'customers#unsubscribe'
+    patch '/customers/withdraw' => 'customers#withdraw'
+    # addresses
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    # items
+    resources :items, only: [:index, :show]
+
+    resources :genres, only: [:show]
+
+    # orders
+    resources :orders, only: [:new, :create, :new, :index, :show] do
+      collection do
+        post :check
+        # 仮でgetにしてます。本来はpostです(check)
+        get :complete
+      end
+    end
+
+    # cart_items
+
+    resources :cart_items, only: [:index, :update, :destroy, :create] do
+      collection do
+        delete "destroy_all"
+      end
+    end
+
+    # サーチ用
+    get "search" => "searches#search"
+
   end
 
   # 管理者用
   namespace :admin do
     root to: 'homes#top'
+    resources :items, except: [:destroy]
+    resources :customers, only: [:index, :show, :edit, :update]
+    get 'customers/orders/:id' => 'customers#orders'
+    resources :genres, only: [:index, :edit, :create, :update, :destroy, :show]
+    resources :orders, only: [:show, :update]
+    resources :order_details, only: [:update]
+    get "search" => "searches#search"
   end
 
   # 顧客用

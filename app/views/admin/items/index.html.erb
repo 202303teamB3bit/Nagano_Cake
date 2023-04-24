@@ -1,0 +1,36 @@
+<div class="text-center mb-5"></div>
+<div class='container add-font'>
+
+  <div class="text-right">
+    <%= link_to new_admin_item_path, class: "btn btn-{themecolor}.rounded-circle.p-0", method: :get do %>
+    <i class="fas fa-plus"></i>
+    <% end %>
+  </div>
+
+  <h3 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap">商品一覧</h3>
+
+  <table class='table table-hover table-inverse'>
+    <thead class="table-danger">
+      <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name, admin_item_path(item.id) %></td>
+        <td><%= item.price.to_s(:delimited)  %></td>
+        <td><%= item.genre ? item.genre.name : "N/A" %></td>
+        <td><%= item.is_active_i18n %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @items, theme: 'twitter-bootstrap-4' %>
+
+</div>
